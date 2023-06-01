@@ -16,7 +16,7 @@ class LepelFactory extends Factory {
     public function definition(): array {
         return [
             'description' => fake()->sentence(),
-            'medient_id' => fake()->randomDigit(),
+            'user_id' => fake()->randomDigit(),
             'date' => fake()->date(),
         ];
     }

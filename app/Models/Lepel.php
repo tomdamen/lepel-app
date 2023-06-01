@@ -10,7 +10,11 @@ class Lepel extends Model {
 
     protected $fillable = [
         'description',
-        'medient_id',
+        'user_id',
         'date',
     ];
+
+    public static function getLepelsByDate($user_id, $date) {
+        return Lepel::where('user_id', $user_id)->where('date', $date)->get();
+    }
 }

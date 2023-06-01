@@ -1,0 +1,27 @@
+.size2rem {
+    height: 2rem;
+    width: 2rem;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+}
+
+.flex-space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.center-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.inline-block {
+    display: inline-block;
+}

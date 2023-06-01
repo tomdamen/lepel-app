@@ -3,10 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Lepel;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable {
     use HasApiTokens, HasFactory, Notifiable;
@@ -41,4 +43,15 @@ class User extends Authenticatable {
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    public function lepels(): HasMany {
+        return $this->hasMany(Lepel::class);
+    }
+
+
+
+    public static function getUserById(int $id) {
+        return User::where('id', $id)->with('lepels')->first();
+    }
 }
