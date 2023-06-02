@@ -21,9 +21,10 @@
                 openlepels="{{ $user->lepels_per_day - count($lepels) }}" userId="{{ $user->id }}" />
             {{-- </x-buttons.lepelinput> --}}
 
-            {{-- {{ dd($lepels) }} --}}
         </div>
     </div>
+    <x-lepel.overview :lepels="$lepels" />
+
 
 
 
