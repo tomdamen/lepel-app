@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Lepel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use SebastianBergmann\Type\VoidType;
 
 class LepelController extends Controller {
 
@@ -38,6 +39,18 @@ class LepelController extends Controller {
                 ->withErrors($validator)
                 ->withInput();
         }
+    }
+
+    public function handleRemoveLepel(Request $request) {
+        // dd($request);
+        $this->removeLepel($request->lepelId);
+
+        return redirect('dashboard');
+    }
+
+    public function removeLepel(int $lepelId) {
+        $entry = Lepel::getLepelById($lepelId);
+        $entry->delete();
     }
 
 }

@@ -5,6 +5,7 @@ use App\Models\Lepel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LepelController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard', ['user' => User::getUserById(1), 'lepels' => Lepel::getLepelsByDate(1, date('Y-m-d'))]); // Remove the standard user and implement the current one
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'viewDashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -35,5 +34,6 @@ Route::middleware('auth')->group(function () {
 // Lepel routes
 
 Route::get('/createLepel', [LepelController::class, 'handleCreateLepel'])->name('lepel.create');
+Route::get('/removeLepel', [LepelController::class, 'handleRemoveLepel'])->name('lepel.remove');
 
 require __DIR__ . '/auth.php';

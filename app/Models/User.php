@@ -51,7 +51,13 @@ class User extends Authenticatable {
 
 
 
-    public static function getUserById(int $id) {
-        return User::where('id', $id)->with('lepels')->first();
+    public static function getUserById(int $userId) {
+        return User::where('id', $userId)->with('lepels')->first();
+    }
+
+    public static function getUserWithDateLepels(int $userId, string $date) {
+        return User::where('id', $userId)->with(['lepels' => function ($q) use ($date) {
+            $q->where('date', $date);
+        }])->first();
     }
 }
