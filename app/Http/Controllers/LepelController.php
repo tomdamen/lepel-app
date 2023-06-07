@@ -12,10 +12,11 @@ class LepelController extends Controller {
 
     public function handleCreateLepel(Request $request) {
         $this->validateCreateLepel(($request));
-
+        // dd($request);
         $this->storeLepel($request);
+        // $date = $request->date;
 
-        return redirect("dashboard");
+        return redirect()->route("dashboard", ['date' => $request->date]);
     }
 
 
@@ -45,7 +46,7 @@ class LepelController extends Controller {
         // dd($request);
         $this->removeLepel($request->lepelId);
 
-        return redirect('dashboard');
+        return redirect()->route("dashboard", ['date' => $request->date]);
     }
 
     public function removeLepel(int $lepelId) {

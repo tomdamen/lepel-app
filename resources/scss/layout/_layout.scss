@@ -11,10 +11,16 @@
 .flex-horizontal {
     display: flex;
     flex-direction: row;
+    gap: 1rem;
 }
 
 .flex-space-between {
     justify-content: space-between;
+}
+
+.flex-align-center {
+    display: flex;
+    align-items: center;
 }
 
 .width-40-rem {

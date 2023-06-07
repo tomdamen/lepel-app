@@ -14,6 +14,7 @@
     <dialog class="removeDialog center-center border">
         <form action="{{ route('lepel.remove') }}" method="GET" class="flex-column">
             @csrf
+            <input type="hidden" name='date' value={{ $item->date }}>
             <input type="hidden" name="lepelId" id="lepelTeVerwijderen">
             <p>Weet je zeker dat je deze lepel wilt verwijderen?</p>
             <div class="flex-space-between">
@@ -23,4 +24,3 @@
         </form>
     </dialog>
 </div>
-<!-- The whole future lies in uncertainty: live immediately. - Seneca -->

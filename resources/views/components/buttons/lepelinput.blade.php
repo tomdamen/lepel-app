@@ -17,13 +17,11 @@
 
 
 
-
-
 <dialog class="dialogopen center-center border">
     <form action="{{ route('lepel.create') }}" class="flex-column">
         <label for="description">Description</label>
         <input type="hidden" name="user_id" value="{{ $userId }}">
-        <input type="hidden" name="date" value="{{ date('Y-m-d') }}">
+        <input type="hidden" name="date" value="{{ $date }}">
         <textarea id="description" name="description" type="text"></textarea>
         <div class="flex-space-between">
             <button type="submit">Submit</button>

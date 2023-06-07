@@ -6,14 +6,26 @@
             </h2>
 
 
-            {{-- {{ dd(date('Y-m-d', strtotime($date . '-1day'))) }} --}}
-            <form class="date-select" action="">
-
-                <button value={{ date('Y-m-d', strtotime($date . '-1day')) }}>Previous</button>
-                <input type="date" name="date" id="date" value={{ $date }}>
-                <button type="submit">Submit</button>
-                <button value={{ date('Y-m-d', strtotime($date . '+1day')) }}>Next</button>
-            </form>
+            <div id='date-selection' class="date-select flex-horizontal flex-align-center">
+                <form class="date-select" action="">
+                    <input type="hidden" name="date" id="date"
+                        value={{ date('Y-m-d', strtotime($date . '-1day')) }}>
+                    <button type='submit'>Previous day</button>
+                </form>
+                <form class="date-select" action="">
+                    <input type="date" name="date" id="date" value={{ $date }}>
+                    <button type="submit">Submit</button>
+                </form>
+                <form class="date-select" action="">
+                    <input type="hidden" name="date" id="date"
+                        value={{ date('Y-m-d', strtotime($date . '+1day')) }}>
+                    <button type='submit'>Next day</button>
+                </form>
+                <form class="date-select" action="">
+                    <input type="hidden" name="date" id="date" value={{ date('Y-m-d') }}>
+                    <button type='submit'>Today</button>
+                </form>
+            </div>
         </div>
     </x-slot>
 
@@ -25,13 +37,13 @@
 
             Hallo {{ $user->name }}
 
-
+            {{-- {{ dd($date) }} --}}
             <x-buttons.lepelinput usedlepels="{{ count($user->lepels) }}"
-                openlepels="{{ $user->lepels_per_day - count($user->lepels) }}" userId="{{ $user->id }}" />
+                openlepels="{{ $user->lepels_per_day - count($user->lepels) }}" userId="{{ $user->id }}" :$date />
 
         </div>
     </div>
-    <x-lepel.lepel-list :$user date="{{ date('Y-m-d') }}" />
+    <x-lepel.lepel-list :$user :$date />
 
 
 
