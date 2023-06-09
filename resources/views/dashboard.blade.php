@@ -37,7 +37,6 @@
 
             Hallo {{ $user->name }}
 
-            {{-- {{ dd($date) }} --}}
             <x-buttons.lepelinput usedlepels="{{ count($user->lepels) }}"
                 openlepels="{{ $user->lepels_per_day - count($user->lepels) }}" userId="{{ $user->id }}" :$date />
 

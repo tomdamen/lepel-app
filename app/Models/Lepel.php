@@ -21,4 +21,8 @@ class Lepel extends Model {
     public static function getLepelsByDate($user_id, $date) {
         return Lepel::where('user_id', $user_id)->where('date', $date)->get();
     }
+
+    public static function getLepelsByDateInterval($user_id, $start_date, $end_date) {
+        return Lepel::where('user_id', $user_id)->where('date', '>=', $start_date)->where('date', '<=', $end_date)->get();
+    }
 }

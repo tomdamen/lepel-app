@@ -60,4 +60,10 @@ class User extends Authenticatable {
             $q->where('date', $date);
         }])->first();
     }
+
+    public static function getUserWithTimeIntervalLepels(int $userId, $startDate, $endDate) {
+        return User::where('id', $userId)->with(['lepels' => function ($q) use ($startDate, $endDate) {
+            $q->where('date', '>=', $startDate)->where('date', '<=', $endDate)->orderBy('date');
+        }])->first();
+    }
 }

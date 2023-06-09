@@ -5,6 +5,7 @@ use App\Models\Lepel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LepelController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\OverviewController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -23,6 +24,8 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [DashboardController::class, 'viewDashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/overview', [OverviewController::class, 'viewOverview'])->middleware(['auth', 'verified'])->name('overview');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
