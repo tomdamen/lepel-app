@@ -10,29 +10,51 @@ use SebastianBergmann\Type\VoidType;
 class LepelController extends Controller {
 
 
-    public function handleCreateLepel(Request $request) {
-        $this->validateCreateLepel(($request));
-        // dd($request);
-        $this->storeLepel($request);
-        // $date = $request->date;
+    public function viewLepel(int $id) {
+        $lepel = Lepel::getLepelById($id);
+        return view('lepel', ['lepel' => $lepel]);
+    }
 
+    public function handleCreateLepel(Request $request) {
+        // dd($request);
+        $this->validateLepel(($request));
+        $this->storeLepel($request);
         return redirect()->route("dashboard", ['date' => $request->date]);
     }
 
+    public function handleUpdateLepel(Request $request) {
+        $this->validateLepel(($request));
+        $this->updateLepel($request);
+        // dd($request);
+        return redirect()->route("lepel.view", ['id' => $request->id]);
+    }
 
-    public function storeLepel($request) {
+
+    public function storeLepel(Request $request) {
         Lepel::create([
             'user_id' => $request->user_id,
             'description' => $request->description,
             'date' => $request->date,
+            'afternoon' => $request->afternoon,
         ]);
     }
 
-    private function validateCreateLepel(Request $request) {
+    public function updateLepel(Request $request) {
+        Lepel::where('id', $request->id)->update([
+            'date' => $request->date,
+            'description' => $request->description,
+
+        ]);
+    }
+
+
+    //DEZE functie snap ik nog niet helemaal wat ie doet
+    private function validateLepel(Request $request) {
         $validator = Validator::make($request->all(), [
             'user_id' => 'required|integer',
             'date' => 'required|date',
             'description' => 'required',
+            'afternoon' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -44,7 +66,7 @@ class LepelController extends Controller {
 
     public function handleRemoveLepel(Request $request) {
         // dd($request);
-        $this->removeLepel($request->lepelId);
+        $this->removeLepel($request->id);
 
         return redirect()->route("dashboard", ['date' => $request->date]);
     }

@@ -18,6 +18,7 @@ class LepelFactory extends Factory {
             'description' => fake()->sentence(),
             'user_id' => fake()->randomDigit(),
             'date' => fake()->date(),
+            'afternoon' => fake()->boolean(),
         ];
     }
 }

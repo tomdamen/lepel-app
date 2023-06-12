@@ -7,8 +7,8 @@
             <div class="timePeriodSelect">
                 <form action="">
                     @csrf
-                    <input type="number" name="timePeriod" value="{{ $timePeriod }}">
-                    <button>Submit</button>
+                    <input type="number" name="timePeriod" value="{{ $timePeriod }}" class="border">
+                    <button class="border">Submit</button>
                 </form>
             </div>
         </div>
@@ -22,12 +22,13 @@
 
 
 
+    <div class="grid-2-columns width-40-rem">
 
-
-    @foreach ($user->lepels as $item)
-        <p>{{ $item }}</p>
-    @endforeach
-
+        @foreach ($user->lepels as $item)
+            <span>{{ $item->date }}:</span> <a
+                href={{ route('lepel.view', ['id' => $item->id]) }}>{{ $item->description }}</a>
+        @endforeach
+    </div>
 
 
 </x-app-layout>

@@ -15,7 +15,13 @@
 }
 
 .flex-space-between {
+    display: flex;
     justify-content: space-between;
+}
+
+.flex-space-around {
+    display: flex;
+    justify-content: space-around;
 }
 
 .flex-align-center {
@@ -23,6 +29,15 @@
     align-items: center;
 }
 
+.grid-2-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 .width-40-rem {
     width: 40rem;
+}
+
+.text-align-right {
+    text-align: right;
 }

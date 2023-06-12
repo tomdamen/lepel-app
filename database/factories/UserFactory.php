@@ -22,7 +22,8 @@ class UserFactory extends Factory {
             'email_verified_at' => now(),
             'password' => Hash::make('password'), // password
             'remember_token' => Str::random(10),
-            'lepels_per_day' => 5,
+            'lepels_per_morning' => 5,
+            'lepels_per_afternoon' => 5,
         ];
     }
 

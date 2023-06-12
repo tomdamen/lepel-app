@@ -36,7 +36,9 @@ Route::middleware('auth')->group(function () {
 
 // Lepel routes
 
+Route::get('/lepel/{id}', [LepelController::class, 'viewLepel'])->name('lepel.view');
 Route::get('/createLepel', [LepelController::class, 'handleCreateLepel'])->name('lepel.create');
+Route::get('/updateLepel', [LepelController::class, 'handleUpdateLepel'])->name('lepel.update');
 Route::get('/removeLepel', [LepelController::class, 'handleRemoveLepel'])->name('lepel.remove');
 
 require __DIR__ . '/auth.php';
