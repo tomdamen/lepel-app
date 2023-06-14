@@ -2,7 +2,7 @@
     @vite(['resources/js/showLepelModal.js'])
     <x-slot name="header">
         <div class="flex-horizontal flex-space-between">
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            <h2 class="">
                 Daily dashboard
             </h2>
 
@@ -34,10 +34,10 @@
     {{-- {{ dd($lepelsMorning) }} --}}
 
     <div class="flex-horizontal flex-space-around">
-        <div class="py-12">
+        <div>
 
-            <h3 class="max-w-7xl mx-auto sm:px-6 lg:px-8">Lepels voor de ochtend:</h3>
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <h3>Lepels voor de ochtend:</h3>
+            <div>
 
                 <div class="margins-center">
                     <x-buttons.lepelinput usedlepels="{{ count($lepelsMorning) }}"
@@ -48,9 +48,9 @@
             <x-lepel.lepel-list :$user :$date :lepels="$lepelsMorning" afternoon=0 />
         </div>
 
-        <div class="py-12">
+        <div>
 
-            <h3 class="max-w-7xl mx-auto sm:px-6 lg:px-8">Lepels voor de middag:</h3>
+            <h3>Lepels voor de middag:</h3>
             <div class="margins-center">
 
                 <x-buttons.lepelinput usedlepels="{{ count($lepelsAfternoon) }}"
@@ -69,7 +69,7 @@
             <input type="hidden" name="user_id" value="{{ $user->id }}">
             <input type="hidden" name="date" value="{{ $date }}">
             <input type="hidden" name="afternoon" id="inputAfternoon">
-            <textarea id="description" name="description" type="text"></textarea>
+            <textarea id="description" name="description" type="text" class="border"></textarea>
             <div class="flex-space-between">
                 <button type="submit">Submit</button>
                 <p class="cancelBtn">Cancel</p>
