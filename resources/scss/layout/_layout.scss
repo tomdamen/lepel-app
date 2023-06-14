@@ -3,9 +3,14 @@
     margin: 2rem auto;
 }
 
-.border {
+.border,
+.border:focus {
     border: 3px solid grey;
     border-radius: 0.1rem;
+}
+
+.hidden {
+    display: none;
 }
 
 .flex-horizontal {
@@ -17,16 +22,19 @@
 .flex-space-between {
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
 }
 
 .flex-space-around {
     display: flex;
     justify-content: space-around;
+    gap: 1rem;
 }
 
 .flex-align-center {
     display: flex;
     align-items: center;
+    gap: 1rem;
 }
 
 .grid-2-columns {
