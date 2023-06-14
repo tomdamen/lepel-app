@@ -1,0 +1,43 @@
+.margins-center {
+    width: fit-content;
+    margin: 2rem auto;
+}
+
+.border {
+    border: 3px solid grey;
+    border-radius: 0.1rem;
+}
+
+.flex-horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.flex-space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-space-around {
+    display: flex;
+    justify-content: space-around;
+}
+
+.flex-align-center {
+    display: flex;
+    align-items: center;
+}
+
+.grid-2-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.width-40-rem {
+    width: 40rem;
+}
+
+.text-align-right {
+    text-align: right;
+}

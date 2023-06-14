@@ -14,7 +14,8 @@ return new class extends Migration {
             $table->timestamps();
             $table->text('description');
             $table->date('date');
-            $table->foreignId('medient_id');
+            $table->boolean('afternoon');
+            $table->foreignId('user_id');
         });
     }
 
