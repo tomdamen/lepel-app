@@ -9,15 +9,13 @@ return new class extends Migration {
      * Run the migrations.
      */
     public function up(): void {
-        Schema::create('spoons', function (Blueprint $table) {
+        Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->text('description');
-            $table->date('date');
-            $table->int('amount_spoons_used_for_activity');
-            $table->foreignId('part_of_day');
-            $table->boolean('afternoon');
-            $table->timestamps();
+            $table->integer('spoons_per_day');
+            $table->integer('default_spoons_per_morning');
+            $table->integer('default_spoons_per_afternoon');
+            $table->integer('default_spoons_per_evening');
         });
     }
 
@@ -25,6 +23,6 @@ return new class extends Migration {
      * Reverse the migrations.
      */
     public function down(): void {
-        Schema::dropIfExists('lepels');
+        //
     }
 };
