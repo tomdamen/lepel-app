@@ -1,5 +1,5 @@
 <x-app-layout>
-    @vite(['resources/js/showLepelModal.js'])
+    @vite(['resources/js/showSpoonModal.js'])
     <x-slot name="header">
         <div class="flex-horizontal flex-space-between">
             <h2 class="">
@@ -31,7 +31,6 @@
     </x-slot>
     <h3 class="subtitle"> Hallo {{ $user->name }}</h3>
 
-    {{-- {{ dd($lepelsMorning) }} --}}
 
     <div class="flex-horizontal flex-space-around">
         <div>
@@ -40,12 +39,12 @@
             <div>
 
                 <div class="margins-center">
-                    <x-buttons.lepelinput usedlepels="{{ count($lepelsMorning) }}"
-                        openlepels="{{ $user->lepels_per_morning - count($lepelsMorning) }}"
+                    <x-buttons.spooninput usedspoons="{{ count($spoonsMorning) }}"
+                        openspoons="{{ $user->spoons_per_morning - count($spoonsMorning) }}"
                         userId="{{ $user->id }}" :$date afternoon=0 />
                 </div>
             </div>
-            <x-lepel.lepel-list :$user :$date :lepels="$lepelsMorning" afternoon=0 />
+            <x-spoon.spoon-list :$user :$date :spoons="$spoonsMorning" afternoon=0 />
         </div>
 
         <div>
@@ -53,18 +52,18 @@
             <h3>Lepels voor de middag:</h3>
             <div class="margins-center">
 
-                <x-buttons.lepelinput usedlepels="{{ count($lepelsAfternoon) }}"
-                    openlepels="{{ $user->lepels_per_afternoon - count($lepelsAfternoon) }}"
+                <x-buttons.spooninput usedspoons="{{ count($spoonsAfternoon) }}"
+                    openspoons="{{ $user->spoons_per_afternoon - count($spoonsAfternoon) }}"
                     userId="{{ $user->id }}" :$date afternoon=1 />
 
             </div>
-            <x-lepel.lepel-list :$user :$date :lepels="$lepelsAfternoon" afternoon=1 />
+            <x-spoon.spoon-list :$user :$date :spoons="$spoonsAfternoon" afternoon=1 />
         </div>
 
     </div>
 
     <dialog class="dialogopen center-center border">
-        <form action="{{ route('lepel.create') }}" class="flex-column">
+        <form action="{{ route('spoon.create') }}" class="flex-column">
             <label for="description">Description</label>
             <input type="hidden" name="user_id" value="{{ $user->id }}">
             <input type="hidden" name="date" value="{{ $date }}">

@@ -24,9 +24,9 @@
 
     <div class="grid-2-columns width-40-rem">
 
-        @foreach ($user->lepels as $item)
+        @foreach ($user->spoons as $item)
             <span>{{ $item->date }}:</span> <a
-                href={{ route('lepel.view', ['id' => $item->id]) }}>{{ $item->description }}</a>
+                href={{ route('spoon.view', ['id' => $item->id]) }}>{{ $item->description }}</a>
         @endforeach
     </div>
 

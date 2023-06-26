@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\lepel>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\spoon>
  */
-class LepelFactory extends Factory {
+class SpoonFactory extends Factory {
     /**
      * Define the model's default state.
      *
@@ -19,6 +19,8 @@ class LepelFactory extends Factory {
             'user_id' => fake()->randomDigit(),
             'date' => fake()->date(),
             'afternoon' => fake()->boolean(),
+            'amount_spoons_used_for_activity' => fake()->numberBetween(1, 3),
+            'part_of_day' => fake()->numberBetween(1, 3),
         ];
     }
 }

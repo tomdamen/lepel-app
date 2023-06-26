@@ -2,36 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Lepel;
+use App\Models\Spoon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use SebastianBergmann\Type\VoidType;
 
-class LepelController extends Controller {
+class SpoonController extends Controller {
 
 
-    public function viewLepel(int $id) {
-        $lepel = Lepel::getLepelById($id);
-        return view('lepel', ['lepel' => $lepel]);
+    public function viewSpoon(int $id) {
+        $spoon = Spoon::getSpoonById($id);
+        return view('spoon', ['spoon' => $spoon]);
     }
 
-    public function handleCreateLepel(Request $request) {
+    public function handleCreateSpoon(Request $request) {
         // dd($request);
-        $this->validateLepel(($request));
-        $this->storeLepel($request);
+        $this->validateSpoon(($request));
+        $this->storeSpoon($request);
         return redirect()->route("dashboard", ['date' => $request->date]);
     }
 
-    public function handleUpdateLepel(Request $request) {
-        $this->validateLepel(($request));
-        $this->updateLepel($request);
+    public function handleUpdateSpoon(Request $request) {
+        $this->validateSpoon(($request));
+        $this->updateSpoon($request);
         // dd($request);
-        return redirect()->route("lepel.view", ['id' => $request->id]);
+        return redirect()->route("spoon.view", ['id' => $request->id]);
     }
 
 
-    public function storeLepel(Request $request) {
-        Lepel::create([
+    public function storeSpoon(Request $request) {
+        Spoon::create([
             'user_id' => $request->user_id,
             'description' => $request->description,
             'date' => $request->date,
@@ -39,8 +39,8 @@ class LepelController extends Controller {
         ]);
     }
 
-    public function updateLepel(Request $request) {
-        Lepel::where('id', $request->id)->update([
+    public function updateSpoon(Request $request) {
+        Spoon::where('id', $request->id)->update([
             'date' => $request->date,
             'description' => $request->description,
 
@@ -49,7 +49,7 @@ class LepelController extends Controller {
 
 
     //DEZE functie snap ik nog niet helemaal wat ie doet
-    private function validateLepel(Request $request) {
+    private function validateSpoon(Request $request) {
         $validator = Validator::make($request->all(), [
             'user_id' => 'required|integer',
             'date' => 'required|date',
@@ -64,15 +64,15 @@ class LepelController extends Controller {
         }
     }
 
-    public function handleRemoveLepel(Request $request) {
+    public function handleRemoveSpoon(Request $request) {
         // dd($request);
-        $this->removeLepel($request->id);
+        $this->removeSpoon($request->id);
 
         return redirect()->route("dashboard", ['date' => $request->date]);
     }
 
-    public function removeLepel(int $lepelId) {
-        $entry = Lepel::getLepelById($lepelId);
+    public function removeSpoon(int $spoonId) {
+        $entry = Spoon::getSpoonById($spoonId);
         $entry->delete();
     }
 

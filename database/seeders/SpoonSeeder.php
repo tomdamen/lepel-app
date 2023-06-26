@@ -2,16 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\Lepel;
+use App\Models\Spoon;
 use Illuminate\Database\Seeder;
-use Database\Factories\LepelFactory;
+use Database\Factories\SpoonFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class LepelSeeder extends Seeder {
+class SpoonSeeder extends Seeder {
     /**
      * Run the database seeds.
      */
     public function run(): void {
-        Lepel::factory(5)->create();
+        Spoon::factory(5)->create();
     }
 }

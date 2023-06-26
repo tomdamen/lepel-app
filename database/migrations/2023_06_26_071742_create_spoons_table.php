@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->foreignId('user_id');
             $table->text('description');
             $table->date('date');
-            $table->int('amount_spoons_used_for_activity');
+            $table->integer('amount_spoons_used_for_activity');
             $table->foreignId('part_of_day');
             $table->boolean('afternoon');
             $table->timestamps();
@@ -25,6 +25,6 @@ return new class extends Migration {
      * Reverse the migrations.
      */
     public function down(): void {
-        Schema::dropIfExists('lepels');
+        Schema::dropIfExists('spoons');
     }
 };

@@ -9,7 +9,7 @@ return new class extends Migration {
      * Run the migrations.
      */
     public function up(): void {
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
+        Schema::create('part_of_day', function (Blueprint $table) {
             $table->id();
             $table->tinyText('description');
         });
@@ -19,6 +19,6 @@ return new class extends Migration {
      * Reverse the migrations.
      */
     public function down(): void {
-        //
+        Schema::dropIfExists('part_of_day');
     }
 };
