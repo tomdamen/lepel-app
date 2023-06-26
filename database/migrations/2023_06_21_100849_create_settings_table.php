@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->integer('default_spoons_per_morning');
             $table->integer('default_spoons_per_afternoon');
             $table->integer('default_spoons_per_evening');
+            $table->timestamps();
         });
     }
 
