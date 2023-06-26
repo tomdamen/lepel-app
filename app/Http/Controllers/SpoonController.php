@@ -31,11 +31,14 @@ class SpoonController extends Controller {
 
 
     public function storeSpoon(Request $request) {
+        // dd($request);
         Spoon::create([
             'user_id' => $request->user_id,
             'description' => $request->description,
             'date' => $request->date,
             'afternoon' => $request->afternoon,
+            'amount_spoons_used_for_activity' => $request->amount_spoons,
+            'part_of_day' => $request->part_of_day,
         ]);
     }
 
@@ -55,6 +58,7 @@ class SpoonController extends Controller {
             'date' => 'required|date',
             'description' => 'required',
             'afternoon' => 'required',
+            'amount_of_spoons' => 'required|integer',
         ]);
 
         if ($validator->fails()) {

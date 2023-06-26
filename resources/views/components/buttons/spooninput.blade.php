@@ -9,7 +9,7 @@
 </div>
 
 <div class="openSpoons inline-block" data-afternoon={{ $afternoon }}>
-    @if (isset($openlepels))
+    @if (isset($openspoons))
         @for ($i = 0; $i < $openspoons; $i++)
             <img src="./spoon.png" alt="" class="size2rem spoon inline-block">
         @endfor

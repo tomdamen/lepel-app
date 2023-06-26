@@ -13,7 +13,7 @@ class Spoon extends Model {
         'user_id',
         'date',
         'afternoon',
-        'amount_of_spoons_used_for_activity',
+        'amount_spoons_used_for_activity',
         'part_of_day',
         'private',
     ];
