@@ -31,6 +31,11 @@
     </x-slot>
     <h3 class="subtitle"> Hallo {{ $user->name }}</h3>
 
+    <p class="margins-center">Lepels voor vandaag:</p>
+    <x-buttons.spooninput usedspoons="{{ count($spoons) }}"
+        openspoons="{{ $user->spoons_per_morning - count($spoonsMorning) }}" userId="{{ $user->id }}" :$date
+        afternoon=0 />
+
 
     <div class="flex-horizontal flex-space-around">
         <div>

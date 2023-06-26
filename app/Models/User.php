@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Spoon;
+use App\Models\Settings;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -50,16 +51,20 @@ class User extends Authenticatable {
         return $this->hasMany(Spoon::class);
     }
 
+    public function settings() {
+        return $this->hasOne(Settings::class);
+    }
+
 
 
     public static function getUserById(int $userId) {
-        return User::where('id', $userId)->with('spoons')->first();
+        return User::where('id', $userId)->with('spoons')->with('settings')->first();
     }
 
     public static function getUserWithDateSpoons(int $userId, string $date) {
         return User::where('id', $userId)->with(['spoons' => function ($q) use ($date) {
             $q->where('date', $date);
-        }])->first();
+        }])->with('settings')->first();
     }
 
     public static function getUserWithTimeIntervalSpoons(int $userId, $startDate, $endDate) {
