@@ -9,13 +9,15 @@ return new class extends Migration {
      * Run the migrations.
      */
     public function up(): void {
-        Schema::create('lepels', function (Blueprint $table) {
+        Schema::create('spoons', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('user_id');
             $table->text('description');
             $table->date('date');
+            $table->integer('amount_spoons_used_for_activity');
+            $table->foreignId('part_of_day');
             $table->boolean('afternoon');
-            $table->foreignId('user_id');
+            $table->timestamps();
         });
     }
 
@@ -23,6 +25,6 @@ return new class extends Migration {
      * Reverse the migrations.
      */
     public function down(): void {
-        Schema::dropIfExists('lepels');
+        Schema::dropIfExists('spoons');
     }
 };

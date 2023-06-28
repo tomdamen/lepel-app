@@ -3,7 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\Lepel;
+use App\Models\Spoon;
+use App\Models\Settings;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -22,6 +23,7 @@ class User extends Authenticatable {
         'name',
         'email',
         'password',
+
     ];
 
     /**
@@ -45,24 +47,28 @@ class User extends Authenticatable {
     ];
 
 
-    public function lepels(): HasMany {
-        return $this->hasMany(Lepel::class);
+    public function spoons(): HasMany {
+        return $this->hasMany(Spoon::class);
+    }
+
+    public function settings() {
+        return $this->hasOne(Settings::class);
     }
 
 
 
     public static function getUserById(int $userId) {
-        return User::where('id', $userId)->with('lepels')->first();
+        return User::where('id', $userId)->with('spoons')->with('settings')->first();
     }
 
-    public static function getUserWithDateLepels(int $userId, string $date) {
-        return User::where('id', $userId)->with(['lepels' => function ($q) use ($date) {
+    public static function getUserWithDateSpoons(int $userId, string $date) {
+        return User::where('id', $userId)->with(['spoons' => function ($q) use ($date) {
             $q->where('date', $date);
-        }])->first();
+        }])->with('settings')->first();
     }
 
-    public static function getUserWithTimeIntervalLepels(int $userId, $startDate, $endDate) {
-        return User::where('id', $userId)->with(['lepels' => function ($q) use ($startDate, $endDate) {
+    public static function getUserWithTimeIntervalSpoons(int $userId, $startDate, $endDate) {
+        return User::where('id', $userId)->with(['spoons' => function ($q) use ($startDate, $endDate) {
             $q->where('date', '>=', $startDate)->where('date', '<=', $endDate)->orderBy('date');
         }])->first();
     }

@@ -1,9 +1,9 @@
 <?php
 
 use App\Models\User;
-use App\Models\Lepel;
+use App\Models\Spoon;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LepelController;
+use App\Http\Controllers\SpoonController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OverviewController;
 use App\Http\Controllers\DashboardController;
@@ -34,11 +34,11 @@ Route::middleware('auth')->group(function () {
 });
 
 
-// Lepel routes
+// Spoon routes
 
-Route::get('/lepel/{id}', [LepelController::class, 'viewLepel'])->name('lepel.view');
-Route::get('/createLepel', [LepelController::class, 'handleCreateLepel'])->name('lepel.create');
-Route::get('/updateLepel', [LepelController::class, 'handleUpdateLepel'])->name('lepel.update');
-Route::get('/removeLepel', [LepelController::class, 'handleRemoveLepel'])->name('lepel.remove');
+Route::get('/spoon/{id}', [SpoonController::class, 'viewSpoon'])->name('spoon.view');
+Route::get('/createSpoon', [SpoonController::class, 'handleCreateSpoon'])->name('spoon.create');
+Route::get('/updateSpoon', [SpoonController::class, 'handleUpdateSpoon'])->name('spoon.update');
+Route::get('/removeSpoon', [SpoonController::class, 'handleRemoveSpoon'])->name('spoon.remove');
 
 require __DIR__ . '/auth.php';

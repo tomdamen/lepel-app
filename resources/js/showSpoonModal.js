@@ -1,12 +1,11 @@
-const lepels = Array.from(document.getElementsByClassName('openLepels'))
+const spoons = Array.from(document.getElementsByClassName('openSpoons'))
 const partOfDay = document.querySelector('#inputAfternoon')
 const dialog = document.querySelector('.dialogopen')
 const cancel = document.querySelector('.cancelBtn')
-console.log(lepels)
 
-lepels.forEach(lepel => {
-    lepel.addEventListener('click', () => {
-        partOfDay.value = lepel.dataset.afternoon
+spoons.forEach(spoon => {
+    spoon.addEventListener('click', () => {
+        partOfDay.value = spoon.dataset.afternoon
         dialog.showModal()
     }
     )

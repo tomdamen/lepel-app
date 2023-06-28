@@ -1,14 +1,14 @@
-@vite(['resources/js/showLepelEditModal.js'])
-@props(['user', 'date' => date('Y-m-d'), 'lepels', 'afternoon'])
+@vite(['resources/js/showSpoonEditModal.js'])
+@props(['user', 'date' => date('Y-m-d'), 'spoons', 'afternoon'])
 
 {{-- {{ dd($lepels) }} --}}
 
 <div class="margins-center">
-    @foreach ($lepels as $item)
+    @foreach ($spoons as $item)
         <form action="" method="GET" class="flex-horizontal flex-space-between border width-40-rem">
             @csrf
             <p>{{ $item->description }}</p>
-            <p class="openThisModal" data-lepel_id={{ $item->id }} data-lepel_description="{{ $item->description }}"
+            <p class="openThisModal" data-spoon_id={{ $item->id }} data-spoon_description="{{ $item->description }}"
                 data-afternoon="{{ $afternoon }}">
                 Edit</p>
         </form>
@@ -22,14 +22,14 @@
                 <input type="date" name='date' value={{ $date }} class="text-align-right">
             </div>
             <div class="border flex-space-between flex-align-center">
-                <label for="editLepelDescription">Description</label>
-                <textarea name="description" id="editLepelDescription" class="text-align-right"></textarea>
+                <label for="editSpoonDescription">Description</label>
+                <textarea name="description" id="editSpoonDescription" class="text-align-right"></textarea>
             </div>
-            <input type="hidden" name="id" id="editLepelId">
+            <input type="hidden" name="id" id="editSpoonId">
             <input type="hidden" name="afternoon" id="afternoon">
             <div class="flex-space-between">
-                <button type="submit" formaction="{{ route('lepel.remove') }}">Verwijderen</button>
-                <button type="submit" formaction="{{ route('lepel.update') }}">Edit</button>
+                <button type="submit" formaction="{{ route('spoon.remove') }}">Verwijderen</button>
+                <button type="submit" formaction="{{ route('spoon.update') }}">Edit</button>
                 <p class="editCancelBtn">Cancel</p>
             </div>
         </form>
