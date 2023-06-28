@@ -10,7 +10,6 @@ class DashboardController extends Controller {
     public function viewDashboard(Request $request) {
         $date = $request->date ?? date('Y-m-d');
         $user = User::getUserWithDateSpoons(1, $date);
-        // dd($user);
         $spoons = Spoon::getSpoonsByDate(1, $date);
         $spoonsMorning = Spoon::getSpoonsByDayPart(1, $date, 0);
         $spoonsAfternoon = Spoon::getSpoonsByDayPart(1, $date, 1);

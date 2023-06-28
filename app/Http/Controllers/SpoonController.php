@@ -16,7 +16,6 @@ class SpoonController extends Controller {
     }
 
     public function handleCreateSpoon(Request $request) {
-        // dd($request);
         $this->validateSpoon(($request));
         $this->storeSpoon($request);
         return redirect()->route("dashboard", ['date' => $request->date]);
@@ -25,7 +24,6 @@ class SpoonController extends Controller {
     public function handleUpdateSpoon(Request $request) {
         $this->validateSpoon(($request));
         $this->updateSpoon($request);
-        // dd($request);
         return redirect()->route("spoon.view", ['id' => $request->id]);
     }
 
@@ -36,6 +34,8 @@ class SpoonController extends Controller {
             'description' => $request->description,
             'date' => $request->date,
             'afternoon' => $request->afternoon,
+            'amount_spoons_used_for_activity' => $request->amount_spoons,
+            'part_of_day' => $request->part_of_day,
         ]);
     }
 
@@ -55,6 +55,7 @@ class SpoonController extends Controller {
             'date' => 'required|date',
             'description' => 'required',
             'afternoon' => 'required',
+            'amount_of_spoons' => 'required|integer',
         ]);
 
         if ($validator->fails()) {
