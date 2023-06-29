@@ -12,7 +12,7 @@ class Spoon extends Model {
         'description',
         'user_id',
         'date',
-        'amount_of_spoons_used_for_activity',
+        'amount_spoons_used_for_activity',
         'part_of_day',
         'private',
     ];
@@ -25,8 +25,8 @@ class Spoon extends Model {
         return Spoon::where('user_id', $user_id)->where('date', $date)->get();
     }
 
-    public static function getSpoonsByDayPart($user_id, $date, $afternoon) {
-        return Spoon::where('user_id', $user_id)->where('date', $date)->where('afternoon', $afternoon)->get();
+    public static function getSpoonsByDayPart($user_id, $date, $part_of_day) {
+        return Spoon::where('user_id', $user_id)->where('date', $date)->where('part_of_day', $part_of_day)->get();
     }
 
     public static function getSpoonsByDateInterval($user_id, $start_date, $end_date) {
