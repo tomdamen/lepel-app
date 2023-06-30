@@ -34,7 +34,7 @@ class SpoonController extends Controller {
             'description' => $request->description,
             'date' => $request->date,
             'afternoon' => $request->afternoon,
-            'amount_spoons_used_for_activity' => $request->amount_spoons,
+            'spoons_for_activity' => $request->spoons_for_activity,
             'part_of_day' => $request->part_of_day,
         ]);
     }
@@ -54,7 +54,7 @@ class SpoonController extends Controller {
             'user_id' => 'required|integer',
             'date' => 'required|date',
             'description' => 'required',
-            'afternoon' => 'required',
+            'part_of_day' => 'required',
             'amount_of_spoons' => 'required|integer',
         ]);
 

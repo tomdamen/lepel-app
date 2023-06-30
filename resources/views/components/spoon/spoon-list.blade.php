@@ -1,5 +1,5 @@
 @vite(['resources/js/showSpoonEditModal.js'])
-@props(['user', 'date' => date('Y-m-d'), 'spoons', 'afternoon'])
+@props(['user', 'date' => date('Y-m-d'), 'spoons', 'partofday'])
 
 {{-- {{ dd($lepels) }} --}}
 
@@ -8,9 +8,15 @@
         <form action="" method="GET" class="flex-horizontal flex-space-between border width-40-rem">
             @csrf
             <p>{{ $item->description }}</p>
-            <p class="openThisModal" data-spoon_id={{ $item->id }} data-spoon_description="{{ $item->description }}"
-                data-afternoon="{{ $afternoon }}">
-                Edit</p>
+            <div class="openThisModal flex-horizontal nogap">
+                {{-- {{ dd($item) }} --}}
+                @for ($i = 0; $i < $item->spoons_for_activity; $i++)
+                    <img src="./spoon.png" alt="" class="size2rem inline-block" style="opacity: 0.5">
+                @endfor
+                <p data-spoon_id={{ $item->id }} data-spoon_description="{{ $item->description }}"
+                    data-partofday="{{ $partofday }}">
+                    Edit</p>
+            </div>
         </form>
     @endforeach
 
