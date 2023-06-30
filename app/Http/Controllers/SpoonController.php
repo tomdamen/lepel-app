@@ -33,9 +33,9 @@ class SpoonController extends Controller {
             'user_id' => $request->user_id,
             'description' => $request->description,
             'date' => $request->date,
-            'afternoon' => $request->afternoon,
-            'spoons_for_activity' => $request->spoons_for_activity,
+            'amount_spoons_used_for_activity' => $request->amount_spoons,
             'part_of_day' => $request->part_of_day,
+            'private' => 0,
         ]);
     }
 

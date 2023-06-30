@@ -20,6 +20,7 @@ class SpoonFactory extends Factory {
             'date' => fake()->date(),
             'spoons_for_activity' => fake()->numberBetween(1, 3),
             'part_of_day' => fake()->numberBetween(1, 3),
+            'private' => fake()->boolean(),
         ];
     }
 }

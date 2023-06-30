@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->date('date');
             $table->integer('spoons_for_activity');
             $table->foreignId('part_of_day');
+            $table->boolean('private');
             $table->timestamps();
         });
     }
