@@ -4,9 +4,10 @@ const dialog = document.querySelector('.dialogopen')
 const cancel = document.querySelector('.cancelBtn')
 
 spoons.forEach(spoon => {
+    console.log(partOfDay)
     spoon.addEventListener('click', () => {
-        partOfDay.value = spoon.dataset.partofday
         dialog.showModal()
+        partOfDay.value = spoon.dataset.partOfDay
     }
     )
 
