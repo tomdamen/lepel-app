@@ -1,16 +1,20 @@
 @vite(['resources/js/showSpoonEditModal.js'])
-@props(['user', 'date' => date('Y-m-d'), 'spoons', 'afternoon'])
+@props(['user', 'date' => date('Y-m-d'), 'spoons', 'partofday'])
 
-{{-- {{ dd($lepels) }} --}}
 
 <div class="margins-center">
     @foreach ($spoons as $item)
-        <form action="" method="GET" class="flex-horizontal flex-space-between border width-40-rem">
+        {{-- {{ dd($item) }} --}}
+        <form action="" method="GET" class="flex-horizontal flex-space-between border">
             @csrf
             <p>{{ $item->description }}</p>
-            <p class="openThisModal" data-spoon_id={{ $item->id }} data-spoon_description="{{ $item->description }}"
-                data-afternoon="{{ $afternoon }}">
-                Edit</p>
+            <div class="openThisModal flex-horizontal nogap" data-spoon_id={{ $item->id }}
+                data-spoon_description="{{ $item->description }}" data-part_of_day="{{ $partofday }}">
+                @for ($i = 0; $i < $item->spoons_for_activity; $i++)
+                    <img src="./spoon.png" alt="" class="size2rem inline-block" style="opacity: 0.5">
+                @endfor
+                <p> Edit</p>
+            </div>
         </form>
     @endforeach
 
@@ -23,10 +27,14 @@
             </div>
             <div class="border flex-space-between flex-align-center">
                 <label for="editSpoonDescription">Description</label>
-                <textarea name="description" id="editSpoonDescription" class="text-align-right"></textarea>
+                <textarea name="description" id="editSpoonDescription" class="text-align-right" required></textarea>
             </div>
-            <input type="hidden" name="id" id="editSpoonId">
-            <input type="hidden" name="afternoon" id="afternoon">
+            <input name="id" id="editSpoonId">
+            <select name="part_of_day" id="part_of_day" required>
+                <option value="1">Ochtend</option>
+                <option value="2">Middag</option>
+                <option value="3">Avond</option>
+            </select>
             <div class="flex-space-between">
                 <button type="submit" formaction="{{ route('spoon.remove') }}">Verwijderen</button>
                 <button type="submit" formaction="{{ route('spoon.update') }}">Edit</button>

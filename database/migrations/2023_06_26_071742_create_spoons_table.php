@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->foreignId('user_id');
             $table->text('description');
             $table->date('date');
-            $table->integer('amount_spoons_used_for_activity');
+            $table->integer('spoons_for_activity');
             $table->foreignId('part_of_day');
             $table->boolean('private');
             $table->timestamps();

@@ -18,7 +18,7 @@ class SpoonFactory extends Factory {
             'description' => fake()->sentence(),
             'user_id' => fake()->randomDigit(),
             'date' => fake()->date(),
-            'amount_spoons_used_for_activity' => fake()->numberBetween(1, 3),
+            'spoons_for_activity' => fake()->numberBetween(1, 3),
             'part_of_day' => fake()->numberBetween(1, 3),
             'private' => fake()->boolean(),
         ];

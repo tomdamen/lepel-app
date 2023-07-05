@@ -1,4 +1,5 @@
-@props(['usedspoons', 'openspoons', 'userId', 'afternoon'])
+@props(['usedspoons', 'openspoons', 'userId', 'partofday'])
+
 
 <div class="usedSpoons inline-block">
     @if (isset($usedspoons))
@@ -8,10 +9,13 @@
     @endif
 </div>
 
-<div class="openSpoons inline-block" data-afternoon={{ $afternoon }}>
-    @if (isset($openspoons))
+<div class="openSpoons inline-block" data-partOfDay={{ $partofday }}>
+    @if (isset($openspoons) && $openspoons > 0)
         @for ($i = 0; $i < $openspoons; $i++)
             <img src="./spoon.png" alt="" class="size2rem spoon inline-block">
         @endfor
+    @else
+        <p>Add additional spoon:</p>
+        <img src="./spoon.png" alt="" class="size2rem spoon inline-block">
     @endif
 </div>

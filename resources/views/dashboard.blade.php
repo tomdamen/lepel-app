@@ -32,9 +32,9 @@
     <h3 class="subtitle"> Hallo {{ $user->name }}</h3>
     <div class="margins-center">
         <p class="">Lepels voor vandaag:</p>
-        <x-buttons.spooninput usedspoons="{{ count($spoons) }}"
-            openspoons="{{ $user->settings->spoons_per_day - count($spoonsMorning) }}" userId="{{ $user->id }}"
-            :$date afternoon=0 />
+        <x-buttons.spooninput usedspoons="{{ $usedSpoonsDay }}"
+            openspoons="{{ $user->settings->spoons_per_day - $usedSpoonsDay }}" userId="{{ $user->id }}" :$date
+            partofday='0' />
     </div>
 
     <div class="flex-horizontal flex-space-around">
@@ -44,12 +44,12 @@
             <div>
 
                 <div class="margins-center">
-                    <x-buttons.spooninput usedspoons="{{ count($spoonsMorning) }}"
-                        openspoons="{{ $user->spoons_per_morning - count($spoonsMorning) }}"
-                        userId="{{ $user->id }}" :$date afternoon=0 />
+                    <x-buttons.spooninput usedspoons="{{ $usedSpoonsMorning }}"
+                        openspoons="{{ $user->spoons_per_morning - $usedSpoonsMorning }}" userId="{{ $user->id }}"
+                        :$date partofday='1' />
                 </div>
             </div>
-            <x-spoon.spoon-list :$user :$date :spoons="$spoonsMorning" afternoon=0 />
+            <x-spoon.spoon-list :$user :$date :spoons="$spoonsMorning" partofday='1' />
         </div>
 
         <div>
@@ -57,12 +57,26 @@
             <h3>Lepels voor de middag:</h3>
             <div class="margins-center">
 
-                <x-buttons.spooninput usedspoons="{{ count($spoonsAfternoon) }}"
-                    openspoons="{{ $user->spoons_per_afternoon - count($spoonsAfternoon) }}"
-                    userId="{{ $user->id }}" :$date afternoon=1 />
+                <x-buttons.spooninput usedspoons="{{ $usedSpoonsAfternoon }}"
+                    openspoons="{{ $user->spoons_per_afternoon - $usedSpoonsAfternoon }}" userId="{{ $user->id }}"
+                    :$date :partofday='2' />
 
             </div>
-            <x-spoon.spoon-list :$user :$date :spoons="$spoonsAfternoon" afternoon=1 />
+            <x-spoon.spoon-list :$user :$date :spoons="$spoonsAfternoon" partofday='2' />
+        </div>
+
+
+        <div>
+
+            <h3>Lepels voor de avond:</h3>
+            <div class="margins-center">
+
+                <x-buttons.spooninput usedspoons="{{ $usedSpoonsEvening }}"
+                    openspoons="{{ $user->spoons_per_evening - $usedSpoonsEvening }}" userId="{{ $user->id }}"
+                    :$date partofday='3' />
+
+            </div>
+            <x-spoon.spoon-list :$user :$date :spoons="$spoonsEvening" partofday='3' />
         </div>
 
     </div>
@@ -72,12 +86,11 @@
             <label for="description">Description</label>
             <input type="hidden" name="user_id" value="{{ $user->id }}">
             <input type="hidden" name="date" value="{{ $date }}">
-            <input type="hidden" name="afternoon" id="inputAfternoon">
-            <textarea id="description" name="description" type="text" class="border"></textarea>
-            <label for="amount_spoons">Aantal lepels voor activiteit:</label>
-            <input type="number" name="amount_spoons" id="amount_spoons" value="1">
+            <textarea id="description" name="description" type="text" class="border" required></textarea>
+            <label for="spoons_for_activity">Aantal lepels voor activiteit:</label>
+            <input type="number" name="spoons_for_activity" id="spoons_for_activity" value="1">
             <label for="part_of_day">Kies een dagdeel:</label>
-            <select name="part_of_day" id="part_of_day">
+            <select name="part_of_day" id="inputPartOfDay" required>
                 <option value="1">Ochtend</option>
                 <option value="2">Middag</option>
                 <option value="3">Avond</option>
