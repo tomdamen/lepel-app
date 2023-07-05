@@ -86,11 +86,11 @@
             <label for="description">Description</label>
             <input type="hidden" name="user_id" value="{{ $user->id }}">
             <input type="hidden" name="date" value="{{ $date }}">
-            <textarea id="description" name="description" type="text" class="border"></textarea>
+            <textarea id="description" name="description" type="text" class="border" required></textarea>
             <label for="spoons_for_activity">Aantal lepels voor activiteit:</label>
             <input type="number" name="spoons_for_activity" id="spoons_for_activity" value="1">
             <label for="part_of_day">Kies een dagdeel:</label>
-            <select name="part_of_day" id="inputPartOfDay">
+            <select name="part_of_day" id="inputPartOfDay" required>
                 <option value="1">Ochtend</option>
                 <option value="2">Middag</option>
                 <option value="3">Avond</option>

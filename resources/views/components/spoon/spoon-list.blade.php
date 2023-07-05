@@ -27,10 +27,10 @@
             </div>
             <div class="border flex-space-between flex-align-center">
                 <label for="editSpoonDescription">Description</label>
-                <textarea name="description" id="editSpoonDescription" class="text-align-right"></textarea>
+                <textarea name="description" id="editSpoonDescription" class="text-align-right" required></textarea>
             </div>
             <input name="id" id="editSpoonId">
-            <select name="part_of_day" id="part_of_day">
+            <select name="part_of_day" id="part_of_day" required>
                 <option value="1">Ochtend</option>
                 <option value="2">Middag</option>
                 <option value="3">Avond</option>
