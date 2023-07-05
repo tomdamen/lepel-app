@@ -29,7 +29,6 @@ class SpoonController extends Controller {
 
 
     public function storeSpoon(Request $request) {
-        // dd($request);
         Spoon::create([
             'user_id' => $request->user_id,
             'description' => $request->description,
@@ -51,25 +50,18 @@ class SpoonController extends Controller {
 
     //DEZE functie snap ik nog niet helemaal wat ie doet
     private function validateSpoon(Request $request) {
-        $validator = Validator::make($request->all(), [
+        // $validator = Validator::make($request->all(), [
+        $validator = $request->validate([
             'user_id' => 'required|integer',
             'date' => 'required|date',
             'description' => 'required',
             'part_of_day' => 'required',
             'spoons_for_activity' => 'required|integer',
         ]);
-
-        if ($validator->fails()) {
-            return back()
-                ->withErrors($validator)
-                ->withInput();
-        }
     }
 
     public function handleRemoveSpoon(Request $request) {
-        // dd($request);
         $this->removeSpoon($request->id);
-
         return redirect()->route("dashboard", ['date' => $request->date]);
     }
 
