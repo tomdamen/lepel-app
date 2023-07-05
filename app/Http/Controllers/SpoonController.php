@@ -47,10 +47,7 @@ class SpoonController extends Controller {
         ]);
     }
 
-
-    //DEZE functie snap ik nog niet helemaal wat ie doet
     private function validateSpoon(Request $request) {
-        // $validator = Validator::make($request->all(), [
         $validator = $request->validate([
             'user_id' => 'required|integer',
             'date' => 'required|date',
