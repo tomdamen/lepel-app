@@ -95,6 +95,8 @@
                 <option value="2">Middag</option>
                 <option value="3">Avond</option>
             </select>
+            <label for="private_activity">Privé activiteit?</label>
+            <input type="checkbox" name="private_activity">
             <div class="flex-space-between">
                 <button type="submit">Submit</button>
                 <p class="cancelBtn">Cancel</p>
