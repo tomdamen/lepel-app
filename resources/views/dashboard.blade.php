@@ -55,7 +55,7 @@
 
                 <div class="margins-center">
                     <x-buttons.spooninput usedspoons="{{ $usedSpoonsMorning }}"
-                        openspoons="{{ $user->spoons_per_morning - $usedSpoonsMorning }}" userId="{{ $user->id }}"
+                        openspoons="{{ $user->settings->default_spoons_per_morning - $usedSpoonsMorning }}" userId="{{ $user->id }}"
                         :$date partofday='1' />
                 </div>
             </div>
@@ -68,7 +68,7 @@
             <div class="margins-center">
 
                 <x-buttons.spooninput usedspoons="{{ $usedSpoonsAfternoon }}"
-                    openspoons="{{ $user->spoons_per_afternoon - $usedSpoonsAfternoon }}" userId="{{ $user->id }}"
+                    openspoons="{{ $user->settings->default_spoons_per_afternoon - $usedSpoonsAfternoon }}" userId="{{ $user->id }}"
                     :$date :partofday='2' />
 
             </div>
@@ -82,7 +82,7 @@
             <div class="margins-center">
 
                 <x-buttons.spooninput usedspoons="{{ $usedSpoonsEvening }}"
-                    openspoons="{{ $user->spoons_per_evening - $usedSpoonsEvening }}" userId="{{ $user->id }}"
+                    openspoons="{{ $user->settings->default_spoons_per_evening - $usedSpoonsEvening }}" userId="{{ $user->id }}"
                     :$date partofday='3' />
 
             </div>
