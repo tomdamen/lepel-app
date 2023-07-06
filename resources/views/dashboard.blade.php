@@ -7,6 +7,8 @@
             </h2>
 
 
+
+
             <div id='date-selection' class="date-select flex-horizontal flex-align-center">
                 <form class="date-select" action="">
                     <input type="hidden" name="date" id="date"
@@ -29,7 +31,15 @@
             </div>
         </div>
     </x-slot>
+
     <h3 class="subtitle"> Hallo {{ $user->name }}</h3>
+    @if ($errors->any())
+        <div>
+            @foreach ($errors->all() as $error)
+                <br> {{ $error }}
+            @endforeach
+        </div>
+    @endif
     <div class="margins-center">
         <p class="">Lepels voor vandaag:</p>
         <x-buttons.spooninput usedspoons="{{ $usedSpoonsDay }}"
