@@ -22,9 +22,8 @@
 </head>
 
 <body class="">
-    <div>
-        @include('layouts.navigation')
-
+    @include('layouts.navigation')
+    <main>
         <!-- Page Heading -->
         @if (isset($header))
             <header class="flex-space-between">
@@ -35,10 +34,9 @@
         @endif
 
         <!-- Page Content -->
-        <main>
-            {{ $slot }}
-        </main>
-    </div>
+
+        {{ $slot }}
+    </main>
 </body>
 
 </html>

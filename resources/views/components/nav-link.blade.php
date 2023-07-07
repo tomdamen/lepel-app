@@ -1,9 +1,10 @@
 @props(['active'])
 
 @php
-    $classes = $active ?? false ? 'inactive' : 'active';
+    $classes = $active ?? true ? 'active' : 'inactive';
 @endphp
 
-<a {{ $attributes->merge(['class' => $classes]) }}>
-    {{ $slot }}
+<a {{ $attributes->merge(['class' => 'fs-500 ' . $classes]) }}>
+    <div class="hoverBar"></div>
+    <p>{{ $slot }}</p>
 </a>
