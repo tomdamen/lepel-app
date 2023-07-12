@@ -8,7 +8,7 @@
         </a>
 
         <!-- Navigation Links -->
-        <div class="flex-align-center" id="navigation-links">
+        <div class="flex-align-center gap-2rem" id="navigation-links">
             <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-nav-link>
@@ -22,8 +22,8 @@
 
 
         <!-- Settings Dropdown -->
-        <div id="dropdown">
-            <x-dropdown align="right" width="48">
+        <div>
+            <x-dropdown align="right">
                 <x-slot name="trigger">
                     <button class="flex-space-between align-center">
                         <div class="no-shrink fs-500">{{ Auth::user()->name }}</div>
@@ -49,7 +49,7 @@
 
                         <x-dropdown-link :href="route('logout')"
                             onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                            this.closest('form').submit();">
                             {{ __('Log Out') }}
                         </x-dropdown-link>
                     </form>
@@ -59,7 +59,7 @@
 
                         <x-dropdown-link :href="route('dashboard')"
                             onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                            this.closest('form').submit();">
                             {{ __('Dashboard') }}
                         </x-dropdown-link>
                     </form>
@@ -69,7 +69,7 @@
 
                         <x-dropdown-link :href="route('overview')"
                             onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                            this.closest('form').submit();">
                             {{ __('Overview') }}
                         </x-dropdown-link>
                     </form>
@@ -80,7 +80,7 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
+    {{-- <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div>
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
@@ -105,11 +105,11 @@
 
                     <x-responsive-nav-link :href="route('logout')"
                         onclick="event.preventDefault();
-                                        this.closest('form').submit();">
+                        this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 </nav>

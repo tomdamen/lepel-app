@@ -1,6 +1,6 @@
 <x-app-layout>
     @vite(['resources/js/showSpoonModal.js'])
-    <div class="flex-column flex-space-between full-height">
+    <div class="flex-column flex-space-between main-content">
         <div class="flex-grow">
             <h3 class="subtitle"> Hallo {{ $user->name }}</h3>
 
@@ -64,7 +64,7 @@
                     <textarea id="description" name="description" type="text" class="border" required></textarea>
                     <label for="spoons_for_activity">Aantal lepels voor activiteit:</label>
                     <input type="number" name="spoons_for_activity" id="spoons_for_activity" value="1">
-                    <label for="part_of_day">Kies een dagdeel:</label>
+                    <label for="inputPartOfDay">Kies een dagdeel:</label>
                     <select name="part_of_day" id="inputPartOfDay" required>
                         <option value="1">Ochtend</option>
                         <option value="2">Middag</option>
@@ -77,33 +77,33 @@
                 </form>
             </dialog>
         </div>
+    </div>
 
-        <div id="date-selection-background">
-            <div id='date-selection' class="date-select fs-500">
-                <div class="day-buttons flex-horizontal">
-                    <form class="date-select" action="">
-                        <input type="hidden" name="date" id="date"
-                            value={{ date('Y-m-d', strtotime($date . '-1day')) }}>
-                        <button type='submit'>Previous day</button>
-                    </form>
-                    <form class="date-select" action="">
-                        <input type="hidden" name="date" id="date" value={{ date('Y-m-d') }}>
-                        <button type='submit'>Today</button>
-                    </form>
-                    <form class="date-select" action="">
-                        <input type="hidden" name="date" id="date"
-                            value={{ date('Y-m-d', strtotime($date . '+1day')) }}>
-                        <button type='submit'>Next day</button>
-                    </form>
-                </div>
-
+    <x-slot name="footer">
+        <div id='date-selection' class="date-select fs-500">
+            <div class="day-buttons flex-horizontal">
                 <form class="date-select" action="">
-                    <input type="date" name="date" id="date" value={{ $date }}>
-                    <button type="submit">Submit</button>
+                    <input type="hidden" name="date" id="date"
+                        value={{ date('Y-m-d', strtotime($date . '-1day')) }}>
+                    <button type='submit'>Previous day</button>
+                </form>
+                <form class="date-select" action="">
+                    <input type="hidden" name="date" id="date" value={{ date('Y-m-d') }}>
+                    <button type='submit'>Today</button>
+                </form>
+                <form class="date-select" action="">
+                    <input type="hidden" name="date" id="date"
+                        value={{ date('Y-m-d', strtotime($date . '+1day')) }}>
+                    <button type='submit'>Next day</button>
                 </form>
             </div>
+
+            <form class="date-select" action="">
+                <input type="date" name="date" id="date" value={{ $date }}>
+                <x-buttons.submit>Submit</x-buttons.submit>
+            </form>
         </div>
-    </div>
+    </x-slot>
 
 
 </x-app-layout>

@@ -4,6 +4,7 @@
             <h2>
                 Overview of the last {{ $timePeriod }} days
             </h2>
+
             <div class="timePeriodSelect">
                 <form action="">
                     @csrf
@@ -12,15 +13,16 @@
                 </form>
             </div>
         </div>
+        <div class="lowerBar"></div>
     </x-slot>
 
 
-    Test of the oveview page
 
 
-    {{-- {{ dd($user) }} --}}
 
 
+
+    <h2>Vandaag:</h2>
 
     <div class="grid-2-columns width-40-rem">
 
@@ -29,6 +31,8 @@
                 href={{ route('spoon.view', ['id' => $item->id]) }}>{{ $item->description }}</a>
         @endforeach
     </div>
+
+    <h2>Gisteren:</h2>
 
 
 </x-app-layout>
