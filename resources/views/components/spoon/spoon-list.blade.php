@@ -8,7 +8,7 @@
             @csrf
             <p>{{ $item->description }}</p>
             <div class="openThisModal flex-horizontal nogap" data-spoon_id={{ $item->id }}
-                data-spoon_description="{{ $item->description }}" data-part_of_day="{{ $partofday }}">
+                data-spoon_description="{{ $item->description }}" data-part_of_day="{{ $partofday }}" data-private_activity="{{ $item->private }}">
                 @for ($i = 0; $i < $item->spoons_for_activity; $i++)
                     <img src="./spoon.png" alt="" class="size2rem inline-block" style="opacity: 0.5">
                 @endfor
