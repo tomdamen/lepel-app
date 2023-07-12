@@ -1,0 +1,19 @@
+#date-selection {
+    margin: 0 auto;
+    width: fit-content;
+    line-height: 2;
+    text-align: center;
+}
+
+
+
+#date-selection-background {
+    background-color: white;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+}
+
+.day-buttons {
+    gap: 2rem;
+}

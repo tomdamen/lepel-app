@@ -1,16 +1,24 @@
 @props(['align' => 'right', 'width' => '48', 'contentClasses' => ''])
 
-<div class="relative" x-data="{ open: false }" @click.outside="open = false" @close.stop="open = false">
+@vite(['resources/js/dropdown.js'])
+
+<div id="dropdown">
+    <div class="relative" id="dropdown-trigger">
+        {{ $trigger }}
+    </div>
+
+    <div class="position-absolute fs-500" id="dropdown-content"> {{ $content }} </div>
+</div>
+
+
+{{-- <div class="relative" x-data="{ open: false }" @click.outside="open = false" @close.stop="open = false">
     <div @click="open = ! open">
         {{ $trigger }}
     </div>
 
-    <div x-show="open" x-transition:enter="transition ease-out duration-200"
-        x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100"
-        x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100"
-        x-transition:leave-end="transform opacity-0 scale-95" style="display: none;" @click="open = false">
+    <div class="position-absolute fs-500" x-show="open" style="display: none;">
         <div>
             {{ $content }}
         </div>
     </div>
-</div>
+</div> --}}

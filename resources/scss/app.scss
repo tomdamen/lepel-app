@@ -1,7 +1,14 @@
+@import './abstacts/variables.scss';
+
 @import './base/reset.scss';
 @import './base/typography.scss';
 @import './base/utilities.scss';
 
+@import './components/buttons.scss';
+@import './components/navigation.scss';
+
 @import './layout/layout.scss';
 
+@import './pages/dashboard';
+@import './pages/overview.scss';
 @import './pages/spooninput.scss';
