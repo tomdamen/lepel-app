@@ -23,7 +23,10 @@
             <input type="date" name="date" id="date" value={{ $spoon->date }}>
 
             <p>{{ $spoon->date }}</p>
+            <label for="private_activity">Privé activiteit?</label>
+            <input type="checkbox" name="private_activity" @if ($spoon->private == 1) checked @endif>
             <p>{{ $spoon->description }}</p>
+
             <button formaction="{{ route('spoon.update') }}">Edit</button>
             <button formaction="{{ route('spoon.remove') }}">Remove</button>
         </div>
