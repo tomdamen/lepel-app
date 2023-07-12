@@ -9,26 +9,7 @@
 
 
 
-            <div id='date-selection' class="date-select flex-horizontal flex-align-center">
-                <form class="date-select" action="">
-                    <input type="hidden" name="date" id="date"
-                        value={{ date('Y-m-d', strtotime($date . '-1day')) }}>
-                    <button type='submit'>Previous day</button>
-                </form>
-                <form class="date-select" action="">
-                    <input type="date" name="date" id="date" value={{ $date }}>
-                    <button type="submit">Submit</button>
-                </form>
-                <form class="date-select" action="">
-                    <input type="hidden" name="date" id="date"
-                        value={{ date('Y-m-d', strtotime($date . '+1day')) }}>
-                    <button type='submit'>Next day</button>
-                </form>
-                <form class="date-select" action="">
-                    <input type="hidden" name="date" id="date" value={{ date('Y-m-d') }}>
-                    <button type='submit'>Today</button>
-                </form>
-            </div>
+
         </div>
     </x-slot>
 
@@ -114,12 +95,31 @@
         </form>
     </dialog>
 
-    <form class="date-select" action="">
-        <input type="date" name="date" id="date" value={{ $date }}>
-        <x-buttons.submit>Submit</x-buttons.submit>
-    </form>
+    <div id="date-selection-background">
+        <div id='date-selection' class="date-select fs-500">
+            <div class="day-buttons flex-horizontal">
+                <form class="date-select" action="">
+                    <input type="hidden" name="date" id="date"
+                        value={{ date('Y-m-d', strtotime($date . '-1day')) }}>
+                    <button type='submit'>Previous day</button>
+                </form>
+                <form class="date-select" action="">
+                    <input type="hidden" name="date" id="date" value={{ date('Y-m-d') }}>
+                    <button type='submit'>Today</button>
+                </form>
+                <form class="date-select" action="">
+                    <input type="hidden" name="date" id="date"
+                        value={{ date('Y-m-d', strtotime($date . '+1day')) }}>
+                    <button type='submit'>Next day</button>
+                </form>
+            </div>
+
+            <form class="date-select" action="">
+                <input type="date" name="date" id="date" value={{ $date }}>
+                <x-buttons.submit>Submit</x-buttons.submit>
+            </form>
+        </div>
     </div>
-    </x-slot>
 
 
 </x-app-layout>
