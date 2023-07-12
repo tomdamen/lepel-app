@@ -21,10 +21,10 @@
     @vite(['resources/scss/app.scss', 'resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="">
+<body>
+    <!-- Page Heading -->
     @include('layouts.navigation')
     <main>
-        <!-- Page Heading -->
         @if (isset($header))
             <header class="flex-space-between">
                 <div>
@@ -37,6 +37,11 @@
 
         {{ $slot }}
     </main>
+    @if (isset($footer))
+        <footer>
+            {{ $footer }}
+        </footer>
+    @endif
 </body>
 
 </html>

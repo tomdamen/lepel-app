@@ -9,7 +9,6 @@ use SebastianBergmann\Type\VoidType;
 
 class SpoonController extends Controller {
 
-
     public function viewSpoon(int $id) {
         $spoon = Spoon::getSpoonById($id);
         return view('spoon', ['spoon' => $spoon]);
@@ -26,17 +25,21 @@ class SpoonController extends Controller {
         $this->updateSpoon($request);
         return redirect()->route("spoon.view", ['id' => $request->id]);
     }
-
-
+    public static function handlePrivateActivityCheckbox(Request $request) {
+        if ($request->private_activity === "on") {
+            return "1";
+        } else {
+            return "0";
+        }
+    }
     public function storeSpoon(Request $request) {
-        // dd($request);
         Spoon::create([
             'user_id' => $request->user_id,
             'description' => $request->description,
             'date' => $request->date,
             'spoons_for_activity' => $request->spoons_for_activity,
             'part_of_day' => $request->part_of_day,
-            'private' => 0,
+            'private' => $this->handlePrivateActivityCheckbox($request),
         ]);
     }
 
@@ -44,32 +47,22 @@ class SpoonController extends Controller {
         Spoon::where('id', $request->id)->update([
             'date' => $request->date,
             'description' => $request->description,
-
+            'private' => $this->handlePrivateActivityCheckbox($request),
         ]);
     }
 
-
-    //DEZE functie snap ik nog niet helemaal wat ie doet
     private function validateSpoon(Request $request) {
-        $validator = Validator::make($request->all(), [
+        $validator = $request->validate([
             'user_id' => 'required|integer',
             'date' => 'required|date',
             'description' => 'required',
             'part_of_day' => 'required',
             'spoons_for_activity' => 'required|integer',
         ]);
-
-        if ($validator->fails()) {
-            return back()
-                ->withErrors($validator)
-                ->withInput();
-        }
     }
 
     public function handleRemoveSpoon(Request $request) {
-        // dd($request);
         $this->removeSpoon($request->id);
-
         return redirect()->route("dashboard", ['date' => $request->date]);
     }
 

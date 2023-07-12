@@ -2,6 +2,8 @@ nav {
     min-height: 5rem;
     box-shadow: 0 6px 8px #b2b2b2;
 
+    width: 100%;
+
     padding: 1.5rem;
     margin: 0 auto;
 }
@@ -43,12 +45,49 @@ nav {
 
 
 #dropdown {
-    min-width: 8rem;
+    min-width: 12rem;
+    position: relative;
 
     background-color: $tertiary-color;
 
     .dropdown-arrow {
         width: 4rem;
         height: 4rem;
+        transition: all 0.5s ease-in-out;
+    }
+}
+
+#dropdown-trigger {
+    &>button {
+        padding-inline: 0.5rem;
+        margin: 0 auto;
+    }
+}
+
+
+
+#dropdown[data-active] {
+    #dropdown-content {
+        transform: scaleY(1);
+        transform-origin: top;
+    }
+
+    .dropdown-arrow {
+        transform: rotate(180deg);
+    }
+}
+
+#dropdown-content {
+    background-color: $tertiary-color;
+    overflow: hidden;
+    transform: scaleY(0);
+    transform-origin: top;
+    width: 100%;
+    transition: transform 0.3s linear;
+
+    &>* {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
     }
 }
